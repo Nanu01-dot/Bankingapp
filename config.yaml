@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: banking-config
+  namespace: banking
+data:
+  DATABASE_URL: jdbc:postgresql://postgres:5432/banking
+  DATABASE_USERNAME: banking
+  EUREKA_URL: http://service-registry:8761/eureka/
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: banking-secrets
+  namespace: banking
+type: Opaque
+stringData:
+  DATABASE_PASSWORD: banking_dev_password
+  POSTGRES_PASSWORD: banking_dev_password
